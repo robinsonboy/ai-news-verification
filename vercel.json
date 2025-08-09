@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "ai_news_backend/src/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "ai-news-frontend/package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "ai_news_backend/src/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "ai_news_backend/src/main.py"
+    }
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai_api_key",
+    "OPENAI_API_BASE": "https://api.openai.com/v1"
+  }
+}
+
